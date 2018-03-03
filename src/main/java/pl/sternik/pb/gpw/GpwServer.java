@@ -1,32 +1,44 @@
 package pl.sternik.pb.gpw;
 
+
 import java.util.Observable;
 
 public final class GpwServer extends Observable implements ServerDanychGieldowych {
 
-	private final Tik[] tiki;
-	private final int licznikMax = 10;
-	private int licznik;
-	
-	public GpwServer() {
-		tiki = new Tik[licznikMax];
-		
-		tiki[0] = new Tik("ABC", 123);
-		tiki[1] = new Tik("DEF", 345);
-		tiki[2] = new Tik("GHI", 567);
-		tiki[3] = new Tik("JKL", 789);
-		tiki[4] = new Tik("MNO", 101);
-		tiki[5] = new Tik("PRS", 202);
-		tiki[6] = new Tik("TUW", 304);
-		tiki[7] = new Tik("XYZ", 502);
-		tiki[8] = new Tik("Q1A", 607);
-		tiki[9] = new Tik("Q2B", 889);
-	}
-	
-	@Override
-	public void symulujTransakcje() {
-		// TODO Auto-generated method stub
-		
-	}
+    private final Tik[] tiki;
+    private final int licznikMax = 10;
+    private int licznik;
+
+    public GpwServer() {
+        tiki = new Tik[licznikMax];
+        tiki[0] = new Tik("KGH", 10);
+        tiki[1] = new Tik("WWL", 1);
+        tiki[2] = new Tik("PKO", 100);
+        tiki[3] = new Tik("PKO", 120);
+        tiki[4] = new Tik("WWL", 1.1);
+        tiki[5] = new Tik("KGH", 10.6);
+        tiki[6] = new Tik("PKO", 123);
+        tiki[7] = new Tik("PKN", 34.5);
+        tiki[8] = new Tik("ATN", 21.5);
+        tiki[9] = new Tik("KGH", 11.1);
+    }
+
+    private Tik pobierzTik() {
+        if (licznik >= licznikMax) {
+            licznik = 0;
+        }
+        return tiki[licznik++];
+    }
+
+    @Override
+    public void symulujTransakcje() {
+        setChanged();
+        notifyObservers(pobierzTik());
+        try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+    }
 
 }
