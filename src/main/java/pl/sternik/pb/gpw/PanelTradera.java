@@ -4,6 +4,8 @@ public final class PanelTradera {
 
 
 	private static ServerDanychGieldowych GPW_SERVER = new GpwServer();
+	private static ServerDanychGieldowych PROXY_ABONAMENT_PKO = new GpwServerKontrolaAbonamentu(GPW_SERVER, "PKO");
+	private static ServerDanychGieldowych PROXY_ABONAMENT_KGH = new GpwServerKontrolaAbonamentu(GPW_SERVER, "KGH");
 	
 	private final WyswietlaczTikow wyswietlaczTikow = new WyswietlaczTikow();
 	private final WyswietlProcentZmiany wyswietlaczProcentZmiany = new WyswietlProcentZmiany();
@@ -19,11 +21,14 @@ public final class PanelTradera {
 
 	public static void main(String[] args) {
 
-		new PanelTradera(PanelTradera.GPW_SERVER);
-
-
+	//	new PanelTradera(PanelTradera.GPW_SERVER);
+		
+		new PanelTradera(PanelTradera.PROXY_ABONAMENT_PKO);
+		new PanelTradera(PanelTradera.PROXY_ABONAMENT_KGH);
+		
 		for (int i = 0; i < ILE_POZYCJI; i++) {
 			PanelTradera.GPW_SERVER.symulujTransakcje();
+			//PanelTradera.PROXY_ABONAMENT_PKO.symulujTransakcje();
 		}
 
 	}

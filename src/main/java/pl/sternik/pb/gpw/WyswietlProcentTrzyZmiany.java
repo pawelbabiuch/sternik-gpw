@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
+@SuppressWarnings("deprecation")
 public class WyswietlProcentTrzyZmiany implements Observer{
 
 	private Map<String, TrzyZmiany> tiki = new HashMap<String, TrzyZmiany>();
@@ -22,7 +23,6 @@ public class WyswietlProcentTrzyZmiany implements Observer{
 			trzyZmiany = new TrzyZmiany(tik);
 		}
 		
-	//	tiki.put(tik.getNazwa(), tik);
 		tiki.put(tik.getNazwa(), trzyZmiany);
 	}
 

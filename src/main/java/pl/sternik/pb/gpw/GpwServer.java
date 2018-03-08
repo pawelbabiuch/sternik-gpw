@@ -3,6 +3,7 @@ package pl.sternik.pb.gpw;
 
 import java.util.Observable;
 
+@SuppressWarnings("deprecation")
 public final class GpwServer extends Observable implements ServerDanychGieldowych {
 
     private final Tik[] tiki;

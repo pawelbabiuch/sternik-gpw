@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
+@SuppressWarnings("deprecation")
 public class WyswietlProcentZmiany implements Observer {
 
 	private final Map<String, Tik> lastTiks = new HashMap<String, Tik>();

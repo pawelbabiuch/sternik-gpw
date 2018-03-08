@@ -3,6 +3,7 @@ package pl.sternik.pb.gpw;
 import java.util.Observable;
 import java.util.Observer;
 
+@SuppressWarnings("deprecation")
 public class WyswietlaczTikow implements  Observer{
 
     @Override
